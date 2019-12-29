@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ktdemo.R;
+import com.example.ktdemo.model.Answer;
 import com.example.ktdemo.model.Question;
 
 import java.util.List;
@@ -47,6 +48,7 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
             holder.tvPercent.setText("Inactive");
         }
         holder.switchActive.setChecked(q.isActive());
+        holder.tvNPS.setText(getNps(q.answers)+"");
 
 
     }
@@ -67,6 +69,33 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
         return percent;
     }
 
+    public int getNps(List<Answer> items){
+        int nps=0;
+        int detractors=0;
+        int dePercent=0;
+        int promoters=0;
+        int proPercent=0;
+        for (Answer a:items){
+            if(a.getRate()>8){
+                promoters++;
+            }else if(a.getRate()<7){
+                detractors++;
+            }
+        }
+        dePercent=getPercent(items.size(),detractors)*-1;
+        proPercent=getPercent(items.size(),promoters);
+        nps=dePercent-proPercent;
+
+
+        return nps;
+    }
+    public int getPercent(int sum,int base){
+        return 100/sum*base;
+
+
+
+    }
+
     @Override
     public int getItemCount() {
         return questions.size();
@@ -78,6 +107,7 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
         public TextView tvPercent;
         public Switch switchActive;
         public LinearLayout itemLayout;
+        public TextView tvNPS;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +115,7 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
             tvWeight=itemView.findViewById(R.id.tvWeight);
             tvPercent=itemView.findViewById(R.id.tvPercent);
             switchActive=itemView.findViewById(R.id.switchActive);
+            tvNPS=itemView.findViewById(R.id.tvQuestionListItemNPS);
             itemLayout=itemView.findViewById(R.id.itemLayout);
             itemLayout.setOnCreateContextMenuListener(this);
 
@@ -99,5 +130,7 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
 
 
         }
+
+
     }
 }

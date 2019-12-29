@@ -40,7 +40,22 @@
             android:clickable="false"
             />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NPS: " />
+
+        <TextView
+            android:id="@+id/tvQuestionListItemNPS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>
