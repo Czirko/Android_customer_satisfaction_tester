@@ -75,23 +75,29 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
         int dePercent=0;
         int promoters=0;
         int proPercent=0;
-        for (Answer a:items){
-            if(a.getRate()>8){
-                promoters++;
-            }else if(a.getRate()<7){
-                detractors++;
+        if(items!=null) {
+            for (Answer a : items) {
+                if (a.getRate() > 8) {
+                    promoters++;
+                } else if (a.getRate() < 7) {
+                    detractors++;
+                }
             }
+            dePercent = getPercent(items.size(), detractors) * -1;
+            proPercent = getPercent(items.size(), promoters);
+            nps = dePercent - proPercent;
+        }else{
+            nps=0;
         }
-        dePercent=getPercent(items.size(),detractors)*-1;
-        proPercent=getPercent(items.size(),promoters);
-        nps=dePercent-proPercent;
-
 
         return nps;
     }
     public int getPercent(int sum,int base){
-        return 100/sum*base;
-
+        if(sum!=0&&base!=0) {
+            return 100 / sum * base;
+        }else{
+            return 0;
+        }
 
 
     }
