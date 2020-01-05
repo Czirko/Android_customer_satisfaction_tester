@@ -18,6 +18,7 @@ import com.example.ktdemo.dao.AnswerDaoImpl;
 import com.example.ktdemo.dao.QuestionDAOImpl;
 import com.example.ktdemo.model.Answer;
 import com.example.ktdemo.model.Question;
+import com.facebook.stetho.Stetho;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,9 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
         }
-        actualQuestion = questions.get(randomIndex);
-
-        tvQuestion.setText(actualQuestion.getQuest());
+        String write="";
+        if(!questions.isEmpty()) {
+            actualQuestion = questions.get(randomIndex);
+            write=actualQuestion.getQuest();
+        }else{
+            write="Üres az adatbázis";
+        }
+        tvQuestion.setText(write);
 
 
 
@@ -92,9 +98,10 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnGo=findViewById(R.id.btnGo);
         seekbHappy= findViewById(R.id.seekbHappyBar);
-        ivHappyMeter=(ImageView)findViewById(R.id.ivHappyMeter);
-        tvProgress=findViewById(R.id.tvProgress);
+        //ivHappyMeter=(ImageView)findViewById(R.id.ivHappyMeter);
+        //tvProgress=findViewById(R.id.tvProgress);
         answerDao=new AnswerDaoImpl(this);
+        Stetho.initializeWithDefaults(this);
 
         final int rate=0;
 
@@ -113,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-               tvProgress.setText(progress+"");
+               //tvProgress.setText(progress+"");
             }
 
             @Override

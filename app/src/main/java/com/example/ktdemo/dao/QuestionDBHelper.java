@@ -22,6 +22,11 @@ private static final int DATABASE_VERSION =1 ;
                  +"quest TEXT,"
                  + " weight INTEGER,"
                  + " active INTEGER )");
+         ContentValues cv = new ContentValues();
+         cv.put("quest", "Ez egy dummy kérdés de már az adatbázisból");
+         cv.put("weight", 10);
+         cv.put("active",1);
+         db.insert("questionitem",null,cv);
 
 
 

@@ -12,8 +12,10 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_question_list">QuestionListActivity</string>
     <string name="write_here_the_question">Write here the question</string>
-    <string name="mehet">Mehet!</string>
+    <string name="mehet">Szavazok</string>
     <string name="semennyire">Semennyire</string>
     <string name="ide_j_n_a_k_rd_s">Ide jön a kérdés.</string>
     <string name="ment_s">Mentés</string>
+    <string name="biztosan_tori_az_osszeset">Biztosan töröli az összes kérdést?</string>
+    <string name="megse">Mégse</string>
 </resources>

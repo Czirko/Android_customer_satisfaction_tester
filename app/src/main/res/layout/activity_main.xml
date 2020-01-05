@@ -5,50 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="15dp">
 
 
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
+        android:autoSizeMaxTextSize="40sp"
+        android:autoSizeMinTextSize="20sp"
+        android:autoText="false"
         android:text="Dummy Question"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/seekbHappyBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivHappyMeter"
-        android:layout_width="53dp"
-        android:layout_height="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnGo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekbHappyBar" />
+        app:layout_constraintVertical_bias="0.469" />
 
     <SeekBar
         android:id="@+id/seekbHappyBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
         android:max="10"
         android:outlineAmbientShadowColor="@color/colorPrimaryDark"
         android:progress="5"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
-        tools:layout_editor_absoluteX="2dp" />
+        android:progressDrawable="@drawable/trick"
+        android:thumb="@drawable/progress"
+        app:layout_constraintBottom_toTopOf="@+id/btnGo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="4dp"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnGo" />
 
     <Button
         android:id="@+id/btnGo"
@@ -57,14 +59,16 @@
         android:text="@string/mehet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/seekbHappyBar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.984" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nagyon"
+        android:text="Semennyire"
         app:layout_constraintBottom_toTopOf="@+id/seekbHappyBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -74,23 +78,13 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/semennyire"
+        android:text="Nagyon"
         app:layout_constraintBottom_toTopOf="@+id/seekbHappyBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/tvQuestion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
