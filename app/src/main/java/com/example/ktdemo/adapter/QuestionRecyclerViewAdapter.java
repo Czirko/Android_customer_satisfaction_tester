@@ -5,6 +5,7 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ktdemo.R;
+import com.example.ktdemo.dao.QuestionDAOImpl;
 import com.example.ktdemo.model.Answer;
 import com.example.ktdemo.model.Question;
 
@@ -36,7 +38,7 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
 
         Question q = questions.get(position);
@@ -48,10 +50,32 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
             holder.tvPercent.setText("Inactive");
         }
         holder.switchActive.setChecked(q.isActive());
+        holder.switchActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                context = buttonView.getContext();
+                Question q =questions.get(position);
+                if(isChecked){
+                    q.setActive(true);
+                    save(q,context);
+                }else{
+                    q.setActive(false);
+                    save(q,context);
+                }
+            }
+        });
+
         holder.tvNPS.setText(getNps(q.answers)+"");
 
 
     }
+
+    private void save(Question q , Context c){
+        QuestionDAOImpl dao = new QuestionDAOImpl(c);
+           dao.saveQuestion(q);
+
+    }
+
 
     private double percentCalc(int weight){
 
@@ -124,6 +148,8 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
             tvNPS=itemView.findViewById(R.id.tvQuestionListItemNPS);
             itemLayout=itemView.findViewById(R.id.itemLayout);
             itemLayout.setOnCreateContextMenuListener(this);
+
+
 
         }
 
