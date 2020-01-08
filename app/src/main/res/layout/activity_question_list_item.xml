@@ -4,6 +4,17 @@
     android:layout_height="wrap_content"
     android:id="@+id/itemLayout">
 
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
@@ -51,11 +62,10 @@
             android:id="@+id/tvQuestionListItemNPS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="0.00" />
 
     </LinearLayout>
+    </LinearLayout>
 
-
-
-
+</androidx.cardview.widget.CardView>
 </LinearLayout>

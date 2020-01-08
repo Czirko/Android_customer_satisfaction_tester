@@ -32,10 +32,12 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.question_recyclerview_item,
+        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_question_list_item,
                 parent,false);
         return new ViewHolder(v);
     }
+
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
@@ -107,9 +109,9 @@ public class QuestionRecyclerViewAdapter extends RecyclerView.Adapter<QuestionRe
                     detractors++;
                 }
             }
-            dePercent = getPercent(items.size(), detractors) * -1;
+            dePercent = getPercent(items.size(), detractors) ;
             proPercent = getPercent(items.size(), promoters);
-            nps = dePercent - proPercent;
+            nps =  proPercent- dePercent;
         }else{
             nps=0;
         }

@@ -97,8 +97,7 @@ public class QuestionListActivity extends AppCompatActivity {
                         .setNegativeButton("Mégse", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(QuestionListActivity.this,"Hello, Mr. Notsure! :)"
-                                        ,LENGTH_LONG).show();
+
                                 dialog.cancel();
                             }
                         });
